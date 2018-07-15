@@ -1,3 +1,3 @@
-import Search from './Search';
+import Asset from './Asset';
 
-export default Search;
+export default Asset;

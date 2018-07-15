@@ -1,10 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
 
-// The Header creates links that can be used to navigate
-// between routes.
-const Search = () => (
-    <div>Search page</div>
-);
+class Asset extends Component {
+    render () {
+        const assetId = parseInt(this.props.match.params.asset, 10) || 0;
+        return (
+            <div>Asset view page { assetId }</div>
+        )
+    }
+}
 
-export default Search;
+export default Asset;
