@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import {connect} from "react-redux";
 import { Link } from "react-router-dom";
 
+import styles from './Asset.scss';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
+
 class Asset extends Component {
 
     componentWillMount () {
@@ -14,7 +19,10 @@ class Asset extends Component {
         return (
             <div>
                 <h2>{ title }</h2>
-                <img src={src} alt=""/>
+                <img
+                    className={ cx('image') }
+                    src={src} alt={ title }
+                />
                 <p>{ description }</p>
             </div>
         )
