@@ -1,5 +1,16 @@
+@import '../../styles/variables';
+
 .header {
-  background-color: white;
+  background-color: $nasa_blue;
+  color: $nasa_red;
+  font-size: 50%;
+
+  a {
+    text-decoration: none;
+    &:visited, &:active {
+      color: $nasa_red;
+    }
+  }
 }
 
 .navBar {
