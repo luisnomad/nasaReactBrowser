@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import AppReducer from './app_reducer';
+import nasaApi from './nasaApi';
+import uiState from './uiState';
 
 const rootReducer = combineReducers({
-    nasa: AppReducer
+    nasa: nasaApi,
+    ui: uiState
 });
 
 export default rootReducer;

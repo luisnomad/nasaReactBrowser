@@ -1,4 +1,4 @@
-const app_reducer = (state = {}, action) => {
+const nasaApi = (state = {}, action) => {
     
     switch (action.type) {
         case 'FETCH_DATA':
@@ -9,4 +9,4 @@ const app_reducer = (state = {}, action) => {
     }
 };
 
-export default app_reducer;
+export default nasaApi;

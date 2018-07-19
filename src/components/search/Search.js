@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import fetchData from '../../actions/fetchData';
+import setCriteria from '../../actions/setCriteria';
 
 const NoResults = () => (
     <div>
@@ -31,6 +32,16 @@ class Search extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentWillMount() {
+        const { ui } = this.props;
+
+        if (ui && ui.searchCriteria) {
+            this.setState({
+                searchCriteria: ui.searchCriteria
+            })
+        }
+    }
+
     handleChange(event) {
         this.setState({searchCriteria: event.target.value});
     }
@@ -39,6 +50,7 @@ class Search extends Component {
         this.setState({ disabled: true });
         const { searchCriteria } = this.state;
         if (searchCriteria !== '') {
+            this.props.setCriteria(searchCriteria);
             this.props.fetchData(searchCriteria).then((res) => {
                 this.setState({ disabled: false });
                 console.log (res.payload.data);
@@ -81,10 +93,17 @@ class Search extends Component {
         );
     }
 }
+
+const mapDispatchToProps = {
+    fetchData, // will be wrapped into a dispatch call
+    setCriteria, // will be wrapped into a dispatch call
+};
+
 const mapStateToProps = (state) => {
     return {
-        nasa: state.nasa
+        nasa: state.nasa,
+        ui: state.ui
     }
 };
 
-export default connect(mapStateToProps, { fetchData })(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

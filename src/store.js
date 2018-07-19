@@ -18,20 +18,22 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+const initStoreValues = {
+    nasa: {
+        collection: {
+            items: []
+        }
+    },
+    ui: {
+        searchCriteria: ''
+    }
+};
 
-/*
-const store = createStore(
-    rootReducer,
-    applyMiddleware(promise),
-    applyMiddleware(appRouterMiddleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-export default store;
-*/
 export const store = createStore(
     persistedReducer,
     applyMiddleware(promise),
     applyMiddleware(appRouterMiddleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    initStoreValues
 );
 export const persistor = persistStore(store);
