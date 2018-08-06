@@ -1,3 +1,9 @@
 import Search from './Search';
+import Results from './Results';
+import ResultsCard from './ResultsCard';
 
-export default Search;
+export { 
+    Search,
+    Results,
+    ResultsCard
+};
