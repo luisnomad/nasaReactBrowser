@@ -38,10 +38,10 @@ class Results extends Component {
     render() {
         const showResults = this._checkResults();
         return (
-            <ul className={ cx('cards') }>
+            <div className={ cx('cards') }>
                 { showResults && this._renderResults() }
                 { !showResults && <NoResults /> }
-            </ul>
+            </div>
         )
     }
 

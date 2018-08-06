@@ -1,102 +1,84 @@
 @import '../../styles/variables';
 @import '../../styles/utils';
 
-$breakpoint: 40rem;
-
-.cards__item {
-  font-size: 70%;
-  display: flex;
-  padding: 1rem;
-  @media(min-width: $breakpoint) {
-    font-size: 90%;
-    width: 50%;
-  }
-  @media(min-width: 56rem) {
-    width: 33.3333%;
-  }
-
-  a {
-    text-decoration: none;
-    color: $oc-black;
-
-    &:visited, &:active {
-      color: inherit;
-    }
-  }
-}
+/* card */
 
 .card {
-  background-color: white;
-  border-radius: 0.25rem;
-  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+  min-height: 100%;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  text-decoration: none;
+  color: #444;
+  position: relative;
+  top: 0;
+  transition: all .1s ease-in;
+
   &:hover {
-    .card__image {
+    top: -2px;
+    box-shadow: 0 4px 5px rgba(0,0,0,0.2);
+
+    & .thumb {
       filter: contrast(100%);
     }
   }
-  cursor: pointer;
-}
-
-.card__content {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  padding: 1rem;
-}
-
-.card__image {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-  filter: contrast(70%);
-  overflow: hidden;
-  position: relative;
-  transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);;
-
-  &:before {
-    content: '';
-    display: block;
-    padding-top: 56.25%; // 16:9 aspect ratio
+  
+  & article {
+    padding: 20px;
+    display: flex;
+    
+    flex: 1;
+    justify-content: space-between;
+    flex-direction: column;
+    
   }
+  & .thumb {
+    padding-bottom: 60%;
+    background-size: cover;
+    background-position: center center;
+    filter: contrast(70%);
+    transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);
+  }
+  
+  & p { 
+    flex: 1; /* make p grow to fill available space*/
+    line-height: 1.4;
 
-  @media(min-width: $breakpoint) {
-    &:before {
-      padding-top: 66.6%; // 3:2 aspect ratio
-    }
+    /* These are technically the same, but use both */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    -ms-word-break: break-all;
+    /* This is the dangerous one in WebKit, as it breaks things wherever */
+    word-break: break-all;
+    /* Instead use this non-standard one: */
+    word-break: break-word;
+
+    /* Adds a hyphen where the word breaks, if supported (No Blink) */
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  
+  /* typography */
+  & h1 {
+    font-size: 20px;
+    margin: 0;
+    color: #333;
+  }
+  
+  & span {
+    font-size: 12px;
+    font-weight: bold;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin: 2em 0 0 0;
   }
 }
 
 .NASA {
   color: $nasa_red;
-}
-
-.card__title {
-  color: $nasa_red;
-  font-size: 1.25rem;
-  font-weight: 300;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-size: 100%;
-}
-
-.card__text {
-  flex: 1 1 auto;
-  font-size: 100%;
-
-  margin-bottom: 1.25rem;
-  overflow-wrap: break-word;
-  word-break: break-all;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4; /* number of lines to show */
-  line-height: 1.5rem;        /* fallback */
-  max-height: 4 * 1.5rem;       /* fallback */
 }

@@ -14,26 +14,36 @@ const highlightNASA = (text) => {
     return <Fragment>{ parts }</Fragment>;
 };
 
-const ResultsCard = ({ title, index, image, description }) => {
+const TruncatedText = ({text, length}) => {
+    const output = text.length >= length
+        ? `${text.substr(0, length)}...`
+        : text;
     return (
         <Fragment>
-            <li className={ cx('cards__item') }>
-                <Link to={`/asset/${index}`}>
-                    <div className={ cx('card') }>
-                        <div
-                            className={ cx('card__image', 'card') }
-                            style={{ backgroundImage: `url(${image})` }}
-                        />
-                        <div className={ cx('card__content') }>
-                            <div className={ cx('card__title') }>
-                                { title }
-                            </div>
-                            <p className={ cx('card__text') }>{ highlightNASA(description) }</p>
-                        </div>
-                    </div>
-                </Link>
-            </li>
+            { output }
         </Fragment>
+    );
+}
+
+const ResultsCard = ({ title, index, image, description }) => {
+    return (
+        <div className={`item-${index}`}>
+            <Link to={`/asset/${index}`} className={ cx('card') }>
+                <div 
+                    style={{ backgroundImage: `url(${image})` }}
+                    className={ cx('thumb') }>
+                </div>
+                <article>
+                    <h1> { title }</h1>
+                    <p>
+                        <TruncatedText 
+                            text={description}
+                            length={140}
+                        />
+                    </p>
+                </article>
+            </Link>
+        </div>
     );
 };
 
