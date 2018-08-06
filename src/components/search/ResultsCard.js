@@ -27,7 +27,7 @@ const TruncatedText = ({text, length}) => {
 
 const ResultsCard = ({ title, index, image, description }) => {
     return (
-        <div className={`item-${index}`}>
+        <div className={ cx(`item-${index + 1}`) }>
             <Link to={`/asset/${index}`} className={ cx('card') }>
                 <div 
                     style={{ backgroundImage: `url(${image})` }}
