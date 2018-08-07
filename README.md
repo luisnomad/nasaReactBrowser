@@ -11,3 +11,14 @@ It allows users to search for assets and then select and view an asset.
 * yarn install
 * yarn start
 * Tests: yarn test
+
+## NASA Documentation
+
+* https://images.nasa.gov/docs/images.nasa.gov_api_docs.pdf
+
+## TODOs by priority
+
+* Finish tests!
+* The Home Page!
+* Add pagination support
+* Improve overall responsiveness
