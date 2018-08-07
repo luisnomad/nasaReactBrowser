@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import {connect} from "react-redux";
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { Meta } from './';
 import styles from './Asset.scss';
 import classNames from 'classnames/bind';
 
@@ -178,8 +179,7 @@ class Asset extends Component {
 
     _renderAsset(assetData) {
         const { title, description, media_type } = assetData.data[0];
-        
-        const { textCollapsed } = this.state;
+        const { textCollapsed, assetContent } = this.state;
         return (
             <div className={ cx('asset', media_type) }>
                 <h2>{ title }</h2>
@@ -195,6 +195,7 @@ class Asset extends Component {
                         Tap to toggle photo/description
                     </span>
                     { description }
+                    
                 </p>
             </div>
         )
