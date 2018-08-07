@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/header';
 import Home from './components/home';
@@ -11,7 +11,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 const App = () => (
-    <div>
+    <Fragment>
         <Header />
         <div  className={ cx('container') }>
             <Switch>
@@ -20,7 +20,7 @@ const App = () => (
                 <Route path='/asset/:asset' component={Asset}/>
             </Switch>
         </div>
-    </div>
+    </Fragment>
 );
 
 export default App;

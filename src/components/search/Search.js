@@ -55,8 +55,8 @@ class Search extends Component {
         
         return (
             <Fragment>
-                <h2>Search page</h2>
                 <div className={ cx('search-box', { disabled }) }>
+                    <h1>Search NASA</h1>
                     <form className={ cx('search-form') }>
                         <input
                             className={ cx('search-text')}
@@ -71,8 +71,8 @@ class Search extends Component {
                             onClick={this.handleSubmit}
                             disabled={disabled} />
                     </form>
-                    { searchCriteria && <Results data={ nasa } /> }
                 </div>
+                <Results data={ nasa } />
             </Fragment>
         );
     }

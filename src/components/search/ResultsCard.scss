@@ -3,13 +3,17 @@
 
 
 /* Featured item  */
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: $tablet_mq) {
   .item-1 {
     grid-column: 1/ span 2;
     & h1 {
       font-size: 30px;
     }
   }
+}
+
+.video {
+  background-color: yellow;
 }
 
 /* card */
@@ -47,29 +51,23 @@
     padding-bottom: 60%;
     background-size: cover;
     background-position: center center;
-    filter: contrast(70%);
     transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);
+
+    &.video-thumb {
+      background: url('../../images/videoposter.jpg');
+      background-size: cover;
+    }
+
+    @media only screen and (min-width: $desktop_mq) {
+      filter: contrast(70%);
+    }
   }
   
   & p { 
     flex: 1; /* make p grow to fill available space*/
     line-height: 1.4;
 
-    /* These are technically the same, but use both */
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-
-    -ms-word-break: break-all;
-    /* This is the dangerous one in WebKit, as it breaks things wherever */
-    word-break: break-all;
-    /* Instead use this non-standard one: */
-    word-break: break-word;
-
-    /* Adds a hyphen where the word breaks, if supported (No Blink) */
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    @include breakWord;
   }
   
   /* typography */
@@ -86,9 +84,10 @@
     text-transform: uppercase;
     letter-spacing: .05em;
     margin: 2em 0 0 0;
+
+    &.NASA {
+      color: $nasa_red;
+    }
   }
 }
 
-.NASA {
-  color: $nasa_red;
-}

@@ -15,32 +15,37 @@ const highlightNASA = (text) => {
 };
 
 const TruncatedText = ({text, length}) => {
-    const output = text.length >= length
-        ? `${text.substr(0, length)}...`
+    const textArray = text.split(' ');
+    const output = textArray.length >= length 
+        ? `${textArray.slice(0, length).join(' ')}...`
         : text;
     return (
         <Fragment>
-            { output }
+            { highlightNASA(output) }
         </Fragment>
     );
 }
 
-const ResultsCard = ({ title, index, image, description }) => {
+const ResultsCard = ({ title, index, image, description, author, mediaType }) => {
     return (
-        <div className={ cx(`item-${index + 1}`) }>
+        <div className={ cx(`item-${index + 1}`, mediaType) }>
             <Link to={`/asset/${index}`} className={ cx('card') }>
-                <div 
+                { mediaType === 'image' && <div 
                     style={{ backgroundImage: `url(${image})` }}
                     className={ cx('thumb') }>
-                </div>
+                </div> }
+                { mediaType === 'video' && <div 
+                    className={ cx('thumb', 'video-thumb') }>
+                </div> }
                 <article>
                     <h1> { title }</h1>
                     <p>
                         <TruncatedText 
                             text={description}
-                            length={140}
+                            length={20}
                         />
                     </p>
+                    { author && <span>{ author } </span> }
                 </article>
             </Link>
         </div>

@@ -6,22 +6,80 @@ $breakpoint: 40rem;
 
 .search-box {
   position: relative;
-  width: 100%;
-  margin: 0;
+  margin: 2rem;
 
   &.disabled {
     opacity: 0.5;
   }
+
+  h1 {
+    color: #000;
+    font-size: 100%;
+    margin: 1rem auto;
+    display: block;
+  }
+
+  @media only screen and (min-width: $tablet_mq) {
+    width: 100%;
+    margin: 0;
+    height: 180px;
+    padding: 5% 10%;
+    background: url('../../images/animated_background.jpg') repeat-x;
+    background-size:cover;
+    -webkit-animation: animatebackground 60s linear infinite;
+    animation: animatebackground 60s linear infinite;
+    -ms-animation: animatebackground 60s linear infinite;
+    -moz-animation: animatebackground 60s linear infinite;
+
+    h1 {
+      color: #fff;
+      font-size: 150%;
+    }
+  }
+
+  @media only screen and (min-width: $desktop_mq) {
+    padding: 15% 10%;
+    height: 445px;
+
+    h1 {
+      font-size: 200%;
+    }
+  }
+}
+
+@keyframes animatebackground 
+{
+ from {background-position: 0 0;}
+ to {background-position: -1000px 0;}
+}
+@-webkit-keyframes animatebackground 
+{
+ from {background-position: 0 0;}
+ to {background-position: -1000px 0;}
+}
+@-ms-keyframes animatebackground 
+{
+ from {background-position: 0 0;}
+ to {background-position: -1000px 0;}
+}
+@-moz-keyframes animatebackground 
+{
+ from {background-position: 0 0;}
+ to {background-position: -1000px 0;}
 }
 
 .search-form {
   height: 40px;
-  border: 1px solid #999;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   background-color: #fff;
   overflow: hidden;
+  position: relative;
+
+  @media only screen and (min-width: $tablet_mq) {
+    border: 1px solid $nasa_red;
+  }
 }
 
 .search-text {

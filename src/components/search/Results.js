@@ -1,5 +1,5 @@
 
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import styles from './Results.scss';
 import classNames from 'classnames/bind';
 
@@ -8,7 +8,7 @@ import { ResultsCard } from './';
 const cx = classNames.bind(styles);
 
 const NoResults = () => (
-    <div>
+    <div className={ cx('no-results') }>
         Your query didn't return any results!
     </div>
 );
@@ -30,7 +30,9 @@ class Results extends Component {
                 index={key}
                 title={item.data[0].title}
                 description={item.data[0].description}
-                image={item.links[0].href}
+                author={item.data[0].center}
+                image={item.data[0].media_type === 'image' ? item.links[0].href : ''}
+                mediaType={item.data[0].media_type}
             />
         ));
     }
@@ -38,10 +40,14 @@ class Results extends Component {
     render() {
         const showResults = this._checkResults();
         return (
-            <div className={ cx('cards') }>
-                { showResults && this._renderResults() }
+            <Fragment>
+                { showResults && <div className={ cx('cards-wrap') }>
+                    <div className={ cx('cards') }>
+                        { this._renderResults() }
+                    </div>
+                </div> }
                 { !showResults && <NoResults /> }
-            </div>
+            </Fragment>
         )
     }
 
