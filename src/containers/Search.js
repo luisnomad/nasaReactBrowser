@@ -9,6 +9,12 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
+const PaginationLink = ({ text }) => (
+    <div className={ cx('pagination-link') }>
+        { text }
+    </div>
+)
+
 class Search extends Component {
 
     constructor() {
@@ -48,6 +54,25 @@ class Search extends Component {
         }
     }
 
+    handleClickLink(url) {
+        this.setState({ disabled: true });
+        this.props.fetchData(null, url).then((res) => {
+            this.setState({ disabled: false });
+        });
+    }
+
+    _paginationLinks(links) {
+        if (links && links.length) {
+            return links.map((link, index) => {
+                return (
+                    <div key={index} onClick={() => this.handleClickLink(link.href)}>
+                        {link.prompt}
+                    </div>
+                );
+            });
+        }
+    }
+
     render() {
         const { disabled, searchCriteria } = this.state;
         const { nasa } = this.props;
@@ -71,6 +96,7 @@ class Search extends Component {
                             disabled={disabled} />
                     </form>
                 </div>
+                { nasa.collection && this._paginationLinks(nasa.collection.links) }
                 <Results data={ nasa } />
             </Fragment>
         );
