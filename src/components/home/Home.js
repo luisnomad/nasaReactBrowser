@@ -1,9 +1,23 @@
-import React from 'react'
+import React from 'react';
+import styles from './Home.scss';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 const Home = () => (
-    <div>
+    <div className={ cx('home-wrapper') }>
         <h1>Welcome to the NASA project!</h1>
-        <p>This design is kind of stuck in the 90s, but that's all I had time to do! (for now)</p>
+        <p>This is a demo project demonstrating the use of: </p>
+        <ul>
+            <li>React + Redux</li>
+            <li>React Router</li>
+            <li>Persited App state (local storage)</li>
+            <li>Promises with axios</li>
+            <li>Redux Middlewares</li>
+            <li>Pulling data from an external API</li>
+            <li>SASS for styling, and it features a responsive, mobile first design</li>
+            <li>Testing components</li>
+        </ul>    
     </div>
 )
 

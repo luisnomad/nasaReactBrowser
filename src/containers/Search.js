@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { connect } from 'react-redux';
-import fetchData from '../../actions/fetchData';
-import setCriteria from '../../actions/setCriteria';
-import { Results } from './';
+import fetchData from '../actions/fetchData';
+import setCriteria from '../actions/setCriteria';
+import { Results } from '../components/search';
 
 import styles from './Search.scss';
 import classNames from 'classnames/bind';
@@ -44,7 +44,6 @@ class Search extends Component {
             this.props.setCriteria(searchCriteria);
             this.props.fetchData(searchCriteria).then((res) => {
                 this.setState({ disabled: false });
-                console.log (res.payload.data);
             });
         }
     }

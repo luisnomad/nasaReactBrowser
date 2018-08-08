@@ -167,8 +167,7 @@ class Asset extends Component {
                         }) } 
                         poster={assetContent.videoPoster}
                         controls
-                        onLoadedData={this._handleVideoReady}
-                    >
+                        onLoadedData={this._handleVideoReady}>
                         <source src={ assetContent.desktop } media="screen and (min-width:850px)" />
                         <source src={ assetContent.mobile }  media="screen and (max-width:849px)" />
                         Your browser does not support the video tag.
@@ -187,15 +186,13 @@ class Asset extends Component {
                 { media_type === 'video' && this._renderVideo() }
                 <p 
                     className={cx( {hidden: textCollapsed })}
-                    onClick={this._toggleText}
-                >
+                    onClick={this._toggleText}>
                     <span
-                        ref={(toggle) => { this.toggle = toggle; }}
-                    >
+                        ref={(toggle) => { this.toggle = toggle; }}>
                         Tap to toggle photo/description
                     </span>
                     { description }
-                    
+                    { assetContent && <Meta data ={assetContent.meta} />} 
                 </p>
             </div>
         )

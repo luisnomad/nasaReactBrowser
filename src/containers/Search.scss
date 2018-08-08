@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/utils';
+@import '../styles/variables';
+@import '../styles/utils';
 
 $searchBoxHeight: 2.5rem;
 $breakpoint: 40rem;
@@ -24,7 +24,7 @@ $breakpoint: 40rem;
     margin: 0;
     height: 180px;
     padding: 5% 10%;
-    background: url('../../images/animated_background.jpg') repeat-x;
+    background: url('../images/animated_background.jpg') repeat-x;
     background-size:cover;
     -webkit-animation: animatebackground 60s linear infinite;
     animation: animatebackground 60s linear infinite;
