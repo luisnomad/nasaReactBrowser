@@ -8,6 +8,6 @@ describe('<App />', () => {
     const wrapped = shallow (<App />);
 
     it('Should render a Header', () => {
-        expect(wrapped.find(Header).length).toEqual(1);
+        expect(wrapped.find('Header').length).toEqual(1);
     });
 });
