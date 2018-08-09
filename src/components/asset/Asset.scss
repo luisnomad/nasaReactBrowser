@@ -39,6 +39,7 @@
 
     bottom: 0;
     max-height: 50vh;
+    width: 100%;
     overflow: scroll;
 
     &.hidden {
@@ -74,6 +75,8 @@
     p {
       position: relative;
       max-height: initial;
+      overflow: visible;
+      padding: 5%;
 
       span {
         display: none;
@@ -93,6 +96,8 @@
 
   .video-player {
     width: 100%;
+    max-width: $desktop_mq;
+    margin: 0 auto;
     height: auto;
     @include transitionOpacity;
 
