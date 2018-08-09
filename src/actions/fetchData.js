@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 export const FETCH_DATA = 'FETCH_DATA';
 
 const fetchData = (criteria = '', url = '') => {

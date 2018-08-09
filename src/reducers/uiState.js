@@ -1,7 +1,9 @@
+import { SET_CRITERIA } from '../actions';
+
 const uiState = (state = {}, action) => {
     
     switch (action.type) {
-        case 'SET_CRITERIA':
+        case SET_CRITERIA:
             const newState = Object.assign(
                     {},
                     ...state,

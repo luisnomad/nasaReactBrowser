@@ -1,8 +1,9 @@
 import fetchData, { FETCH_DATA } from './fetchData';
-import setCriteria from './setCriteria';
+import setCriteria, { SET_CRITERIA } from './setCriteria';
 
 export {
     fetchData,
     FETCH_DATA,
-    setCriteria
+    setCriteria,
+    SET_CRITERIA
 };

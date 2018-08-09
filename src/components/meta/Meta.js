@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styles from './Meta.scss';
 import classNames from 'classnames/bind';
 
@@ -47,4 +48,8 @@ export default class Meta extends Component {
         );
     }
 }
+
+Meta.propTypes = {
+    data: PropTypes.object.isRequired
+};
 

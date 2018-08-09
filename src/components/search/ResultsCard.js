@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { Fragment } from "react";
-
+import PropTypes from 'prop-types';
 import styles from './ResultsCard.scss';
 import classNames from 'classnames/bind';
 
@@ -25,6 +25,11 @@ const TruncatedText = ({text, length}) => {
         </Fragment>
     );
 }
+
+TruncatedText.propTypes = {
+    text: PropTypes.string.isRequired,
+    length: PropTypes.number.isRequired
+};
 
 const ResultsCard = ({ title, index, image, description, author, mediaType }) => {
 
@@ -56,5 +61,20 @@ const ResultsCard = ({ title, index, image, description, author, mediaType }) =>
         </div>
     );
 };
+
+ResultsCard.propTypes = {
+    title: PropTypes.string.isRequired, 
+    index: PropTypes.number.isRequired, 
+    image: PropTypes.string, 
+    description: PropTypes.string.isRequired, 
+    author: PropTypes.string, 
+    mediaType: PropTypes.string
+};
+
+ResultsCard.defaultProps = {
+    image: '',
+    author: 'NASA',
+    mediaType: 'image'
+}
 
 export default ResultsCard;

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import fetchData from '../actions/fetchData';
 import setCriteria from '../actions/setCriteria';
@@ -22,6 +23,15 @@ const PaginationLink = ({ text, isDisabled, ...props }) => {
         </a>
     </li>);
 }
+
+PaginationLink.propTypes = {
+    text: PropTypes.string.isRequired,
+    isDisabled: PropTypes.bool
+};
+
+PaginationLink.defaultProps = {
+    isDisabled: false
+  };
 
 class Search extends Component {
 

@@ -223,6 +223,10 @@ class Asset extends Component {
     }
 }
 
+Asset.propTypes = {
+    nasa: PropTypes.object
+};
+
 const mapStateToProps = (state) => {
     return {
         nasa: state.nasa

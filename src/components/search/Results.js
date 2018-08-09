@@ -1,5 +1,6 @@
 
 import React, { Component, Fragment } from "react";
+import PropTypes from 'prop-types';
 import styles from './Results.scss';
 import classNames from 'classnames/bind';
 
@@ -62,5 +63,9 @@ class Results extends Component {
     }
 
 }
+
+Results.propTypes = {
+    data: PropTypes.object.isRequired
+};
 
 export default Results;
