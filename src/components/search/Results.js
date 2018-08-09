@@ -8,7 +8,7 @@ import { ResultsCard } from './';
 
 const cx = classNames.bind(styles);
 
-const NoResults = () => (
+export const NoResults = () => (
     <div className={ cx('no-results') }>
         Your query didn't return any results!
     </div>
@@ -39,7 +39,10 @@ class Results extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        if (!this.props.data || !this.props.data.collection) {
+        if (!this.props.data 
+            || !this.props.data.collection
+            || !nextProps.data
+            || !nextProps.data.collection) {
             return true;
         }
         const currentPage = this.props.data.collection.href;

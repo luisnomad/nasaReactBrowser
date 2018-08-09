@@ -74,7 +74,8 @@
       "src/**/*.{js,jsx,mjs}"
     ],
     "setupFiles": [
-      "<rootDir>/config/polyfills.js"
+      "<rootDir>/config/polyfills.js",
+      "<rootDir>/config/setupTests.js"
     ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
@@ -112,7 +113,9 @@
     "extends": "react-app"
   },
   "devDependencies": {
-    "jest": "^20.0.4",
-    "redux-devtools-extension": "^2.13.5"
+    "jest": "^22.1.4",
+    "redux-devtools-extension": "^2.13.5",
+    "enzyme": "^3.4.1",
+    "enzyme-adapter-react-16": "^1.2.0"
   }
 }

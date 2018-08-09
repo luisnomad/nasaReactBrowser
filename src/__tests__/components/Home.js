@@ -1,10 +1,10 @@
-'use strict';
-
 import React from 'react';
+import { shallow } from 'enzyme';
 import Home from '../../components/home';
 
 describe('<Home />', () => {
     it('Should render correctly', () => {
-        expect(true).toBe(true);
+        const wrapped = shallow (<Home />);
+        expect(wrapped.find('.home-wrapper').length).toEqual(1);
     });
 });
