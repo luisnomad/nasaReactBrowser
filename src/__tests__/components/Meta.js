@@ -4,8 +4,14 @@ import Meta from '../../components/meta';
 
 import mockData from '../../mockData/metaMock';
 
+let wrapped; 
+
+beforeEach(() => {
+    wrapped = shallow (<Meta data={mockData} />);
+});
+
 describe('<Meta />', () => {
-    const wrapped = shallow (<Meta data={mockData} />);
+
     it('Should have data hidden', () => {
         expect(wrapped.find('textarea').length).toEqual(0);
     });
