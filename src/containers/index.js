@@ -1,5 +1,7 @@
 import Search from './Search';
+import Asset from './Asset';
 
 export { 
-    Search
+    Search,
+    Asset
 };

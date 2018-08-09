@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import { Meta } from './';
+import { Meta } from '../components/meta';
 import styles from './Asset.scss';
 import classNames from 'classnames/bind';
 
