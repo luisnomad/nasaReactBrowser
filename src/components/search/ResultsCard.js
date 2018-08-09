@@ -27,6 +27,11 @@ const TruncatedText = ({text, length}) => {
 }
 
 const ResultsCard = ({ title, index, image, description, author, mediaType }) => {
+
+    if (!title || !description) {
+        return <div>Loading...</div>
+    }
+
     return (
         <div className={ cx(`item-${index + 1}`, mediaType) }>
             <Link to={`/asset/${index}`} className={ cx('card') }>

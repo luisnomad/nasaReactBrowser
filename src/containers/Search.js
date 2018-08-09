@@ -61,15 +61,35 @@ class Search extends Component {
         });
     }
 
-    _paginationLinks(links) {
+    _paginationLinks(links, currentPage = '') {
         if (links && links.length) {
-            return links.map((link, index) => {
+            const buttons = links.map((link, index) => {
                 return (
-                    <div key={index} onClick={() => this.handleClickLink(link.href)}>
-                        {link.prompt}
-                    </div>
+                    <li className="page-item" key={index}>
+                        <a 
+                            className="page-link" 
+                            onClick={() => this.handleClickLink(link.href)}
+                            href="#">
+                            {link.prompt}
+                        </a>
+                    </li>
                 );
             });
+            const pageUrl = new URL(currentPage);
+            return (
+                <ul className="pagination justify-content-center">
+                    { pageUrl && pageUrl.searchParams && 
+                       <li className="page-item  disabled">
+                       <a 
+                            className="page-link" 
+                            href="#">
+                            Page {pageUrl.searchParams.get('page')}
+                       </a>
+                   </li> 
+                    }
+                    { buttons }
+                </ul>
+            );
         }
     }
 
@@ -96,7 +116,7 @@ class Search extends Component {
                             disabled={disabled} />
                     </form>
                 </div>
-                { nasa.collection && this._paginationLinks(nasa.collection.links) }
+                { nasa.collection && this._paginationLinks(nasa.collection.links, nasa.collection.href) }
                 <Results data={ nasa } />
             </Fragment>
         );

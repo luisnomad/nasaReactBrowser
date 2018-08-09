@@ -9,9 +9,9 @@ export default class Header extends React.Component {
     render() {
         return (
             <div className={ cx('header') }>
-                <ul className={ cx('navBar') }>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/search">Search</Link></li>
+                <ul className="nav">
+                    <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/search">Search</Link></li>
                 </ul>
             </div>
         );
