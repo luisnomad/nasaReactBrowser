@@ -9,11 +9,19 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const PaginationLink = ({ text }) => (
-    <div className={ cx('pagination-link') }>
-        { text }
-    </div>
-)
+const PaginationLink = ({ text, isDisabled, ...props }) => {
+    const classNames = isDisabled 
+        ? "page-item disabled"
+        : "page-item";
+    return (<li className={ classNames }>
+        <a 
+            className="page-link" 
+            href="#page"
+            {...props}>
+            {text}
+        </a>
+    </li>);
+}
 
 class Search extends Component {
 
@@ -65,27 +73,20 @@ class Search extends Component {
         if (links && links.length) {
             const buttons = links.map((link, index) => {
                 return (
-                    <li className="page-item" key={index}>
-                        <a 
-                            className="page-link" 
-                            onClick={() => this.handleClickLink(link.href)}
-                            href="#">
-                            {link.prompt}
-                        </a>
-                    </li>
+                    <PaginationLink 
+                        text={link.prompt} 
+                        onClick={() => this.handleClickLink(link.href)}
+                        key={index} />
                 );
             });
             const pageUrl = new URL(currentPage);
             return (
                 <ul className="pagination justify-content-center">
                     { pageUrl && pageUrl.searchParams && 
-                       <li className="page-item  disabled">
-                       <a 
-                            className="page-link" 
-                            href="#">
-                            Page {pageUrl.searchParams.get('page')}
-                       </a>
-                   </li> 
+                         <PaginationLink 
+                            text={`Page ${pageUrl.searchParams.get('page')}`} 
+                            isDisabled={true}
+                          />
                     }
                     { buttons }
                 </ul>
