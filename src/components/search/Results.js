@@ -37,6 +37,16 @@ class Results extends Component {
         ));
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (!this.props.data || !this.props.data.collection) {
+            return true;
+        }
+        const currentPage = this.props.data.collection.href;
+        const nextPropsPage = nextProps.data.collection.href;
+
+        return currentPage !== nextPropsPage;
+    }
+
     render() {
         const showResults = this._checkResults();
         return (

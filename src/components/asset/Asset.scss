@@ -31,12 +31,15 @@
     @include breakWord;
     @include transitionOpacity;
     position: absolute;
-    top: 15%;
     padding: 10%;
     background-color: rgba(0, 0, 0, 0.5);
     margin: 0;
     opacity: 1;
     overflow: visible;
+
+    bottom: 0;
+    max-height: 50vh;
+    overflow: scroll;
 
     &.hidden {
       opacity: 0;
@@ -44,7 +47,7 @@
 
     span {
       position: absolute;
-      top: 0%;
+      top: 4%;
       width: 100%;
       text-align: center;
       font-size: 55%;
@@ -70,11 +73,18 @@
   &.video {
     p {
       position: relative;
+      max-height: initial;
 
       span {
         display: none;
       }
     }
+
+    .mp4-warning {
+      text-align: center;
+      font-size: 0.6rem;
+    }
+
   }
 
   .video-preloader {
@@ -133,10 +143,17 @@
       margin: 0 2rem 2rem;
       background-color: transparent;
       position: initial;
+      max-height: initial;
+      bottom: initial;
+      overflow: visible;
 
       span {
         display: none;
       }
+    }
+
+    .mp4-warning {
+      display: none;
     }
   }
   

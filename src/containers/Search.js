@@ -82,7 +82,7 @@ class Search extends Component {
             const pageUrl = new URL(currentPage);
             return (
                 <ul className="pagination justify-content-center">
-                    { pageUrl && pageUrl.searchParams && 
+                    { pageUrl && pageUrl.searchParams && pageUrl.searchParams.get('page') && 
                          <PaginationLink 
                             text={`Page ${pageUrl.searchParams.get('page')}`} 
                             isDisabled={true}

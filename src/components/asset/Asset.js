@@ -172,6 +172,9 @@ class Asset extends Component {
                         <source src={ assetContent.mobile }  media="screen and (max-width:849px)" />
                         Your browser does not support the video tag.
                     </video>
+                    { assetContent.mobile && assetContent.mobile.indexOf('.mp4') > 0 &&
+                        <small className={ cx('mp4-warning') }>Note: some phones don't support MP4 video files</small>
+                    }
                 </Fragment>
         );
     }
