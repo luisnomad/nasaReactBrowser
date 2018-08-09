@@ -18,7 +18,4 @@ It allows users to search for assets and then select and view an asset.
 
 ## TODOs by priority
 
-* Finish tests!
-* The Home Page!
-* Add pagination support
-* Improve overall responsiveness
+* Test Redux states
