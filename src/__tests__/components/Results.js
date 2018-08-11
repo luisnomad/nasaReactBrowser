@@ -36,8 +36,8 @@ describe('<Results />', () => {
 
     it('With provided mock data, 1st element should be a video', () => {
         let wrapped; 
+        
         wrapped = getResultsCard(mockData.collection.items[0]);
-        console.log(wrapped.find('.videssso'));
         expect(wrapped.find('.video')).toBeTruthy();
         
         wrapped = getResultsCard(mockData.collection.items[7]);
