@@ -18,6 +18,7 @@ describe('<Meta />', () => {
 
     it('Should show the metadata box when the button is clicked', () => {
         wrapped.find('button').simulate('click', { stopPropagation() {} });
+        wrapped.update();
         expect(wrapped.find('textarea').length).toEqual(1);
         expect('showMeta' in wrapped.state()).toEqual(true);
     });
