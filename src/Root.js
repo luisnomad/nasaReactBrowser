@@ -5,12 +5,12 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
 
 // Helper Root component to be reused in tests
-export default (props) => {
+export default ({ children }) => {
     return (
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                 <BrowserRouter>
-                    {props.children}
+                    {children}
                 </BrowserRouter>
             </PersistGate>
         </Provider>

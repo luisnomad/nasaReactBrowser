@@ -66,7 +66,7 @@ ResultsCard.propTypes = {
     title: PropTypes.string.isRequired, 
     index: PropTypes.number.isRequired, 
     image: PropTypes.string, 
-    description: PropTypes.string.isRequired, 
+    description: PropTypes.string, // sometimes the API does not return description, so I've marked as NOT required
     author: PropTypes.string, 
     mediaType: PropTypes.string
 };
