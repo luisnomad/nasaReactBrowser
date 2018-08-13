@@ -1,6 +1,9 @@
 {
-  "main.js": "static/js/main.8fd69355.js",
-  "main.js.map": "static/js/main.8fd69355.js.map",
-  "static/media/Header.scss": "static/media/Header.2624a859.scss",
-  "static/media/base.scss": "static/media/base.fcec725c.scss"
+  "main.css": "styles.css",
+  "main.css.map": "styles.css.map",
+  "main.js": "static/js/main.e072c849.js",
+  "main.js.map": "static/js/main.e072c849.js.map",
+  "static/media/animated_background.jpg": "static/media/animated_background.1bc10fcb.jpg",
+  "static/media/nasalization-rg-webfont.woff": "static/media/nasalization-rg-webfont.ad578fe5.woff",
+  "static/media/nasalization-rg-webfont.woff2": "static/media/nasalization-rg-webfont.79dd3f8c.woff2"
 }
