@@ -113,9 +113,10 @@
     "extends": "react-app"
   },
   "devDependencies": {
-    "jest": "^22.1.4",
-    "redux-devtools-extension": "^2.13.5",
     "enzyme": "^3.4.1",
-    "enzyme-adapter-react-16": "^1.2.0"
+    "enzyme-adapter-react-16": "^1.2.0",
+    "enzyme-to-json": "^3.3.4",
+    "jest": "^22.1.4",
+    "redux-devtools-extension": "^2.13.5"
   }
 }
