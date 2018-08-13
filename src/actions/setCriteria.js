@@ -1,5 +1,5 @@
 
-export const SET_CRITERIA = 'SET_CRITERIA';
+import { SET_CRITERIA } from './types';
 
 const setCriteria = (criteria = '') => {
 

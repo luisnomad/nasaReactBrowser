@@ -1,5 +1,5 @@
 
-import { FETCH_DATA } from '../actions';
+import { FETCH_DATA } from '../actions/types';
 
 const nasaApi = (state = {}, action) => {
     
