@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { Meta } from '../components/meta';
+import Header from '../components/header';
 import styles from './Asset.scss';
 import classNames from 'classnames/bind';
 
@@ -23,22 +24,7 @@ class Asset extends Component {
             videoLoaded: false
         }
 
-        this._toggleText = this._toggleText.bind(this);
         this._handleVideoReady = this._handleVideoReady.bind(this);
-    }
-
-    _toggleText() {
-        if (this._isMobile()) {
-            this.setState(prevState => ({
-                textCollapsed: !prevState.textCollapsed
-            }));
-        }
-    }
-
-    _isMobile() {
-        // toggle is an element that will be hidden with media queries in the Desktop
-        // so offsetHeight will return 0 in mobile/tablet
-        return this.toggle.offsetHeight > 0;
     }
 
     _handleVideoReady() {
@@ -121,27 +107,25 @@ class Asset extends Component {
     _renderImages(assetData) {
         const { assetContent } = this.state;
         return (
-            <Fragment>
+            <p className={ cx('image-wrapper', 'mb-3 mb-md-0 mr-md-3 w-60') }>
             {  !assetContent && 
                 <img
                     onClick={this._toggleText}
-                    className={ cx('figure') }
+                    className="img-fluid"
                     src={assetData.links[0].href} alt={ assetData.data[0].title }
                 />
             }
             {  assetContent && assetContent.mobile &&
                 <img
-                    onClick={this._toggleText}
-                    className={ cx('figure', 'mobile') }
+                    className={ cx('img-fluid', 'mobile') }
                     src={assetContent.mobile }
                     alt={ assetData.data[0].title }
                 />
             }
             {  assetContent && assetContent.desktop &&
                 <img
-                    onClick={this._toggleText}
                     className={ cx({
-                        'figure': true,
+                        'img-fluid': true,
                         'desktop': true,
                         'no-mobile': !assetContent.mobile
                     }) }
@@ -149,7 +133,7 @@ class Asset extends Component {
                     alt={ assetData.data[0].title }
                 />
             }
-            </Fragment>
+            </p>
         );
     }
 
@@ -158,47 +142,51 @@ class Asset extends Component {
         return (
             assetContent && 
                 <Fragment>
-                    { !videoLoaded && 
-                        <h3 className={cx('video-preloader')}>Video is loading...</h3>
-                    }
-                    <video 
-                        className={ cx({
-                            'video-player': true,
-                            'video-loading': !videoLoaded
-                        }) } 
-                        poster={assetContent.videoPoster}
-                        controls
-                        onLoadedData={this._handleVideoReady}>
-                        <source src={ assetContent.desktop } media="screen and (min-width:850px)" />
-                        <source src={ assetContent.mobile }  media="screen and (max-width:849px)" />
-                        Your browser does not support the video tag.
-                    </video>
+                    <div className="embed-responsive embed-responsive-16by9">
+                        { !videoLoaded && 
+                            <h3 className={cx('video-preloader')}>Video is loading...</h3>
+                        }
+                        <video 
+                            className={ cx({
+                                'embed-responsive-item': true,
+                                'video-loading': !videoLoaded
+                            }) } 
+                            poster={assetContent.videoPoster}
+                            controls
+                            onLoadedData={this._handleVideoReady}>
+                            <source src={ assetContent.desktop } media="screen and (min-width:850px)" />
+                            <source src={ assetContent.mobile }  media="screen and (max-width:849px)" />
+                            Your browser does not support the video tag.
+                        </video>       
+                    </div>
                     { assetContent.mobile && assetContent.mobile.indexOf('.mp4') > 0 &&
-                        <small className={ cx('mp4-warning') }>Note: some phones don't support MP4 video files</small>
-                    }
+                    <small className={ cx('mp4-warning') }>Note: some phones don't support MP4 video files</small> }
                 </Fragment>
-        );
+            );    
+    }
+       
+    _renderAsset(assetData) {
+        const { description, media_type } = assetData.data[0];
+        const { assetContent } = this.state;
+        return (
+            <div className={ cx({'d-flex flex-column': true, ' flex-md-row': media_type === 'image'}) }>
+                { media_type === 'video' && this._renderVideo() }
+                { media_type === 'image' && this._renderImages(assetData) }
+                <div className={ cx('description') }>
+                    <p>
+                        { description }
+                        { assetContent && <Meta data ={assetContent.meta} />} 
+                    </p>
+                </div>
+            </div>  
+        )
     }
 
-    _renderAsset(assetData) {
-        const { title, description, media_type } = assetData.data[0];
-        const { textCollapsed, assetContent } = this.state;
+    _renderTitle(assetData) {
+        const { title } = assetData.data[0];
+        
         return (
-            <div className={ cx('asset', media_type) }>
-                <h2>{ title }</h2>
-                { media_type === 'image' && this._renderImages(assetData) }
-                { media_type === 'video' && this._renderVideo() }
-                <p 
-                    className={cx( {hidden: textCollapsed })}
-                    onClick={this._toggleText}>
-                    <span
-                        ref={(toggle) => { this.toggle = toggle; }}>
-                        Tap to toggle photo/description
-                    </span>
-                    { description }
-                    { assetContent && <Meta data ={assetContent.meta} />} 
-                </p>
-            </div>
+            <h3>{ title }</h3>        
         )
     }
 
@@ -212,12 +200,18 @@ class Asset extends Component {
         }
 
         const assets = this.props.nasa.collection.items;
+        const currentAsset = assets[assetId];
         
         return (
-            <div className={ cx('wrapper') }>
-                { !assets[assetId] && <div> Oops! { assetId } is an invalid asset ID </div> }
-                { assets[assetId] && this._renderAsset(assets[assetId]) }
-            </div>
+            <Fragment>
+                <Header className={cx('header')}>
+                    { currentAsset && this._renderTitle(currentAsset) }
+                </Header>    
+                <div className="container">
+                    { !currentAsset && <div> Oops! { assetId } is an invalid asset ID </div> }
+                    { currentAsset && this._renderAsset(currentAsset) }
+                </div>
+            </Fragment>
 
         )
     }

@@ -5,6 +5,6 @@ import Home from '../../components/home';
 describe('<Home />', () => {
     it('Should render correctly', () => {
         const wrapped = shallow (<Home />);
-        expect(wrapped.find('.home-wrapper').length).toEqual(1);
+        expect(wrapped.find('.jumbotron-heading').length).toEqual(1);
     });
 });

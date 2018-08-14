@@ -2,9 +2,8 @@
 
 exports[`<App /> Should render correctly 1`] = `
 <Fragment>
-  <Header />
-  <div
-    className="container"
+  <main
+    role="main"
   >
     <Switch>
       <Route
@@ -22,6 +21,6 @@ exports[`<App /> Should render correctly 1`] = `
         path="/asset/:asset"
       />
     </Switch>
-  </div>
+  </main>
 </Fragment>
 `;
