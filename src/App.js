@@ -10,15 +10,15 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 const App = () => (
-    <Fragment>
-        <main role="main">
-            <Switch>
-                <Route exact path='/' component={Home}/>
-                <Route exact path='/search' component={Search}/>
-                <Route path='/asset/:asset' component={Asset}/>
-            </Switch>
-        </main>
-    </Fragment>
+  <Fragment>
+    <main role="main">
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/search" component={Search} />
+        <Route path="/asset/:asset" component={Asset} />
+      </Switch>
+    </main>
+  </Fragment>
 );
 
 export default App;

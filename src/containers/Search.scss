@@ -26,7 +26,7 @@ $breakpoint: 40rem;
     height: 180px;
     padding: 5% 10%;
     background: url('../images/animated_background.jpg') repeat-x;
-    background-size:cover;
+    background-size: cover;
     -webkit-animation: animatebackground 60s linear infinite;
     animation: animatebackground 60s linear infinite;
     -ms-animation: animatebackground 60s linear infinite;
@@ -48,25 +48,37 @@ $breakpoint: 40rem;
   }
 }
 
-@keyframes animatebackground 
-{
- from {background-position: 0 0;}
- to {background-position: -1000px 0;}
+@keyframes animatebackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -1000px 0;
+  }
 }
-@-webkit-keyframes animatebackground 
-{
- from {background-position: 0 0;}
- to {background-position: -1000px 0;}
+@-webkit-keyframes animatebackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -1000px 0;
+  }
 }
-@-ms-keyframes animatebackground 
-{
- from {background-position: 0 0;}
- to {background-position: -1000px 0;}
+@-ms-keyframes animatebackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -1000px 0;
+  }
 }
-@-moz-keyframes animatebackground 
-{
- from {background-position: 0 0;}
- to {background-position: -1000px 0;}
+@-moz-keyframes animatebackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -1000px 0;
+  }
 }
 
 .search-form {
@@ -135,4 +147,3 @@ img {
   display: block;
   width: 100%;
 }
-

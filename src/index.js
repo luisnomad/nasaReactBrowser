@@ -7,9 +7,9 @@ import Root from './Root';
 import './styles/base.scss';
 
 ReactDOM.render(
-    <Root>
-        <App />
-    </Root>,
-    document.getElementById('root')
+  <Root>
+    <App />
+  </Root>,
+  document.getElementById('root')
 );
 registerServiceWorker();

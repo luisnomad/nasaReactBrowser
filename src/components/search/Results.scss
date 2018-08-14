@@ -2,35 +2,34 @@
 @import '../../styles/utils';
 
 .cards-wrap {
-    margin: 2rem;
+  margin: 2rem;
 }
 
 .cards {
-    width: 100%;
-    max-width: 100%;
-    margin: 20px auto 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 20px auto 0;
 
-    display: grid;
+  display: grid;
 
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-gap: 20px;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px;
 }
 
 .no-results {
-    margin: 2rem auto;
-    text-align: center;
+  margin: 2rem auto;
+  text-align: center;
 }
 
 @media only screen and (min-width: $tablet_mq) {
-    .cards {
-      grid-template-columns: 1fr 1fr;
-    }
+  .cards {
+    grid-template-columns: 1fr 1fr;
   }
-  
-  @media only screen and (min-width: $desktop_mq) {
-    .cards {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
+}
+
+@media only screen and (min-width: $desktop_mq) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
-  
+}

@@ -4,22 +4,21 @@ import Meta from '../../components/meta';
 
 import mockData from '../../mockData/metaMock';
 
-let wrapped; 
+let wrapped;
 
 beforeEach(() => {
-    wrapped = shallow (<Meta data={mockData} />);
+  wrapped = shallow(<Meta data={mockData} />);
 });
 
 describe('<Meta />', () => {
+  it('Should have data hidden', () => {
+    expect(wrapped.find('textarea').length).toEqual(0);
+  });
 
-    it('Should have data hidden', () => {
-        expect(wrapped.find('textarea').length).toEqual(0);
-    });
-
-    it('Should show the metadata box when the button is clicked', () => {
-        wrapped.find('button').simulate('click', { stopPropagation() {} });
-        wrapped.update();
-        expect(wrapped.find('textarea').length).toEqual(1);
-        expect('showMeta' in wrapped.state()).toEqual(true);
-    });
+  it('Should show the metadata box when the button is clicked', () => {
+    wrapped.find('button').simulate('click', { stopPropagation() {} });
+    wrapped.update();
+    expect(wrapped.find('textarea').length).toEqual(1);
+    expect('showMeta' in wrapped.state()).toEqual(true);
+  });
 });
