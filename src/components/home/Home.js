@@ -1,9 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './Home.scss';
-import classNames from 'classnames/bind';
 import Header from '../header';
-
-const cx = classNames.bind(styles);
 
 const Home = () => (
   <Fragment>

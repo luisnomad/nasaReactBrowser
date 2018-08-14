@@ -1,13 +1,7 @@
 import React, { Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Header from './components/header';
 import Home from './components/home';
 import { Search, Asset } from './containers';
-
-import styles from './App.scss';
-import classNames from 'classnames/bind';
-
-const cx = classNames.bind(styles);
 
 const App = () => (
   <Fragment>

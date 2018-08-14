@@ -114,14 +114,7 @@ class Asset extends Component {
     const { assetContent } = this.state;
     return (
       <p className={cx('image-wrapper', 'mb-3 mb-md-0 mr-md-3 w-60')}>
-        {!assetContent && (
-          <img
-            onClick={this._toggleText}
-            className="img-fluid"
-            src={assetData.links[0].href}
-            alt={assetData.data[0].title}
-          />
-        )}
+        {!assetContent && <div>Loading image...</div>}
         {assetContent &&
           assetContent.mobile && (
             <img
