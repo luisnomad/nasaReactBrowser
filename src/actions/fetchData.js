@@ -11,6 +11,11 @@ const fetchData = (criteria = '', url = '') => {
   const request = axios.get(url !== '' ? url : ENDPOINT);
   // TODO: Add error handling!
   // https://github.com/pburtchaell/redux-promise-middleware/blob/master/docs/guides/rejected-promises.md
+  return fetchNasaData(request);
+};
+
+// Testable API request
+export const fetchNasaData = request => {
   return dispatch =>
     dispatch({
       type: FETCH_DATA,
