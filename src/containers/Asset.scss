@@ -10,10 +10,34 @@
 }
 
 .description {
+  @include breakWord;
   margin-top: 0.5rem;
 }
 
 .mp4-warning {
   font-size: 80%;
   text-align: center;
+}
+
+.desktop {
+  display: none;
+}
+
+.mobile {
+  display: inline;
+}
+
+@media only screen and (min-width: $desktop_mq) { 
+
+    .image-wrapper {
+      max-width: 60%;
+    }
+
+    .desktop {
+      display: inline;
+    }
+
+    .mobile {
+      display: none;
+    }
 }
