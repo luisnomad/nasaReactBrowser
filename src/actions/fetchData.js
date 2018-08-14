@@ -9,13 +9,17 @@ import { FETCH_DATA } from './types';
 const fetchData = (criteria = '', url = '') => {
   const ENDPOINT = `https://images-api.nasa.gov/search?q=${criteria}&media_type=image,video`;
   const request = axios.get(url !== '' ? url : ENDPOINT);
-
   // TODO: Add error handling!
   // https://github.com/pburtchaell/redux-promise-middleware/blob/master/docs/guides/rejected-promises.md
-  return {
-    type: FETCH_DATA,
-    payload: request
-  };
+  return dispatch =>
+    dispatch({
+      type: FETCH_DATA,
+      payload: request
+    }).catch(error => {
+      console.log(error.message);
+      // TODO: Dispatch a second action in response to the error
+      // dispatch(error());
+    });
 };
 
 export default fetchData;
