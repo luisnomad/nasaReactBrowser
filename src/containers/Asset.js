@@ -36,6 +36,8 @@ class Asset extends Component {
     const assets = this.props.nasa.collection.items;
     const { assetId } = this.state;
     if (assets && assets[assetId]) {
+      // TODO: Move this to a helper function and out of this lifecycle method
+      // so it can be tested!
       const nasaId = assets[assetId].data[0].nasa_id;
       const mediaType = assets[assetId].data[0].media_type;
       const URL = `https://images-api.nasa.gov/asset/${nasaId}`;
@@ -77,6 +79,7 @@ class Asset extends Component {
             }, {});
 
           if (parsedData.meta) {
+            // TODO: This is not the right place for this
             return axios.get(parsedData.meta).then(metaData => {
               // Group data by type
               const groupMetaData = Object.keys(metaData.data).reduce(
