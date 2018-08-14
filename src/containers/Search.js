@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import fetchData from '../actions/fetchData';
 import setCriteria from '../actions/setCriteria';
 import { Results } from '../components/search';
+import Header from '../components/header';
 
 import styles from './Search.scss';
 import classNames from 'classnames/bind';
@@ -110,23 +111,25 @@ class Search extends Component {
         
         return (
             <Fragment>
-                <div className={ cx('search-box', { disabled }) }>
-                    <h1>Search NASA</h1>
-                    <form className={ cx('search-form') }>
-                        <input
-                            className={ cx('search-text')}
-                            type= "text"
-                            placeholder= "Search in NASA"
-                            value={searchCriteria}
-                            onChange={this.handleChange}
-                        />
-                        <input
-                            className={ cx('search-button')}
-                            type="submit"
-                            onClick={this.handleSubmit}
-                            disabled={disabled} />
-                    </form>
-                </div>
+                <Header className={ cx('search-box', { disabled }) }>
+                    <div>
+                        <h1>Search NASA</h1>
+                        <form className={ cx('search-form') }>
+                            <input
+                                className={ cx('search-text')}
+                                type= "text"
+                                placeholder= "Search in NASA"
+                                value={searchCriteria}
+                                onChange={this.handleChange}
+                            />
+                            <input
+                                className={ cx('search-button')}
+                                type="submit"
+                                onClick={this.handleSubmit}
+                                disabled={disabled} />
+                        </form>
+                    </div>
+                </Header>
                 { nasa.collection && this._paginationLinks(nasa.collection.links, nasa.collection.href) }
                 <Results data={ nasa } />
             </Fragment>

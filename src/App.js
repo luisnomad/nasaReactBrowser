@@ -11,14 +11,13 @@ const cx = classNames.bind(styles);
 
 const App = () => (
     <Fragment>
-        <Header />
-        <div className={ cx('container') }>
+        <main role="main">
             <Switch>
                 <Route exact path='/' component={Home}/>
                 <Route exact path='/search' component={Search}/>
                 <Route path='/asset/:asset' component={Asset}/>
             </Switch>
-        </div>
+        </main>
     </Fragment>
 );
 

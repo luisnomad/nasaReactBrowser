@@ -9,8 +9,7 @@ import './styles/base.scss';
 ReactDOM.render(
     <Root>
         <App />
-    </Root>
-    ,
+    </Root>,
     document.getElementById('root')
 );
 registerServiceWorker();
