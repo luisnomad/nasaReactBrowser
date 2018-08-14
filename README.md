@@ -16,6 +16,6 @@ It allows users to search for assets and then select and view an asset.
 
 * https://images.nasa.gov/docs/images.nasa.gov_api_docs.pdf
 
-## TODOs by priority
+## Design
 
-* Test Redux states
+* Working on a much better design (check out feature/redesign)

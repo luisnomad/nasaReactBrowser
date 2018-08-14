@@ -17,6 +17,7 @@ const Home = () => (
             <li>Pulling data from an external API</li>
             <li>SASS for styling, and it features a responsive, mobile first design</li>
             <li>Testing components</li>
+            <li>Git Flow and Feature branches</li>
         </ul>    
     </div>
 )

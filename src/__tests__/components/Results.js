@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import { Results, ResultsCard } from '../../components/search';
 import { MemoryRouter } from 'react-router';
 
-import mockData from '../../mockData/responseMock';
+import mockData from '../../mockData/responseMock'; // NOTE: I will implement moxios to mock http requests and return this!
 import noResultsMock from '../../mockData/noResultsMock';
 
 // NOTE: This cheatsheet is quite useful -> https://devhints.io/enzyme
