@@ -6,15 +6,16 @@ import toJson from 'enzyme-to-json';
 import mockData from '../../mockData/responseMock';
 
 describe('<Asset />', () => {
-    const wrapped = mount(
-        <Root>
-            <Asset 
-                match={{params: { asset: 1}, isExact: true, path: "", url: ""}}
-                nasa={mockData} />
-        </Root>
-    );
+  const wrapped = mount(
+    <Root>
+      <Asset
+        match={{ params: { asset: 1 }, isExact: true, path: '', url: '' }}
+        nasa={mockData}
+      />
+    </Root>
+  );
 
-    it('Should render correctly', () => {
-        expect(toJson(wrapped)).toMatchSnapshot();
-    });
+  it('Should render correctly', () => {
+    expect(toJson(wrapped)).toMatchSnapshot();
+  });
 });

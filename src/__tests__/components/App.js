@@ -4,9 +4,9 @@ import App from '../../App';
 import toJson from 'enzyme-to-json';
 
 describe('<App />', () => {
-    const wrapped = shallow (<App />);
+  const wrapped = shallow(<App />);
 
-    it('Should render correctly', () => {
-        expect(toJson(wrapped)).toMatchSnapshot();
-    });
+  it('Should render correctly', () => {
+    expect(toJson(wrapped)).toMatchSnapshot();
+  });
 });

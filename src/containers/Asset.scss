@@ -27,17 +27,16 @@
   display: inline;
 }
 
-@media only screen and (min-width: $desktop_mq) { 
+@media only screen and (min-width: $desktop_mq) {
+  .image-wrapper {
+    max-width: 60%;
+  }
 
-    .image-wrapper {
-      max-width: 60%;
-    }
+  .desktop {
+    display: inline;
+  }
 
-    .desktop {
-      display: inline;
-    }
-
-    .mobile {
-      display: none;
-    }
+  .mobile {
+    display: none;
+  }
 }

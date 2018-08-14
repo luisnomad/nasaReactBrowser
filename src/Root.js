@@ -6,13 +6,11 @@ import { BrowserRouter } from 'react-router-dom';
 
 // Helper Root component to be reused in tests
 export default ({ children }) => {
-    return (
-        <Provider store={store}>
-            <PersistGate loading={null} persistor={persistor}>
-                <BrowserRouter>
-                    {children}
-                </BrowserRouter>
-            </PersistGate>
-        </Provider>
-    );
-}
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>{children}</BrowserRouter>
+      </PersistGate>
+    </Provider>
+  );
+};
