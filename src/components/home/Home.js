@@ -29,7 +29,8 @@ const Home = () => (
           <a
             href="https://github.com/prettier/prettier"
             target="_blank"
-            alt="prettier">
+            alt="prettier"
+            rel="noopener noreferrer">
             prettier
           </a>
         </li>
