@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import fetchData from '../actions/fetchData';
-import setCriteria from '../actions/setCriteria';
+import { fetchData, setCriteria } from '../actions';
 import { Results } from '../components/search';
 import Header from '../components/header';
 
