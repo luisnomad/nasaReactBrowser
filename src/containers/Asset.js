@@ -54,7 +54,7 @@ class Asset extends Component {
       return true;
     }
 
-    if (nextAssetData.timestamp != nextAssetData.timestamp) {
+    if (currentAssetData.timestamp !== nextAssetData.timestamp) {
       return true;
     }
 
