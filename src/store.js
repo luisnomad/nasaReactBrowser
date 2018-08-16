@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import promise from 'redux-promise';
 import createHistory from 'history/createHashHistory';
@@ -33,6 +34,6 @@ const initStoreValues = {
 export const store = createStore(
   persistedReducer,
   initStoreValues,
-  composeWithDevTools(applyMiddleware(promise, appRouterMiddleware))
+  composeWithDevTools(applyMiddleware(promise, appRouterMiddleware, thunk))
 );
 export const persistor = persistStore(store);

@@ -1,2 +1,4 @@
 // Set the default
-"editor.formatOnSave": true
+"editor.formatOnSave": true,
+"prettier.singleQuote": true,
+"prettier.jsxBracketSameLine": true

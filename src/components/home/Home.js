@@ -15,13 +15,25 @@ const Home = () => (
         <li>React Router</li>
         <li>Persited App state (local storage)</li>
         <li>Promises with axios</li>
-        <li>Redux Middlewares</li>
+        <li>Redux Middlewares (redux-thunk, redux-promise, redux-persist)</li>
         <li>Pulling data from an external API</li>
         <li>
-          SASS for styling, and it features a responsive, mobile first design
+          SASS for styling, and it features a responsive, mobile first design.
+          No, I don't use CSS in JS. I use IF it's a requirement. Personal
+          taste.
         </li>
         <li>Testing components</li>
         <li>Git Flow and Feature branches</li>
+        <li>
+          Pretty code thanks to{' '}
+          <a
+            href="https://github.com/prettier/prettier"
+            target="_blank"
+            alt="prettier"
+            rel="noopener noreferrer">
+            prettier
+          </a>
+        </li>
       </ul>
     </div>
   </Fragment>
