@@ -36,7 +36,7 @@ class Asset extends Component {
     const assets = this.props.nasa.collection.items;
     const { assetId } = this.state;
     if (assets && assets[assetId]) {
-      // TODO: Move this to a helper function and out of this lifecycle method
+      // TODO: Move this to a helper function or a redux action, out of this lifecycle method
       // so it can be tested!
       const nasaId = assets[assetId].data[0].nasa_id;
       const mediaType = assets[assetId].data[0].media_type;
@@ -155,8 +155,7 @@ class Asset extends Component {
               })}
               poster={assetContent.videoPoster}
               controls
-              onLoadedData={this._handleVideoReady}
-            >
+              onLoadedData={this._handleVideoReady}>
               <source
                 src={assetContent.desktop}
                 media="screen and (min-width:850px)"
@@ -187,8 +186,7 @@ class Asset extends Component {
         className={cx({
           'd-flex flex-column': true,
           ' flex-md-row': media_type === 'image'
-        })}
-      >
+        })}>
         {media_type === 'video' && this._renderVideo()}
         {media_type === 'image' && this._renderImages(assetData)}
         <div className={cx('description')}>

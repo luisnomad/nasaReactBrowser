@@ -11,10 +11,22 @@ export const NoResults = () => (
   <div className={cx('no-results')}>Your query didn't return any results!</div>
 );
 
+export const ErrorMessage = props => (
+  <div className="alert alert-danger text-center" role="alert">
+    {props.message}
+  </div>
+);
+
 class Results extends Component {
   _checkResults() {
     const { data } = this.props;
     return data && data.collection && data.collection.items.length > 0;
+  }
+
+  _checkErrors() {
+    const { data } = this.props;
+    console.log(data.error);
+    return !data || data.error;
   }
 
   _renderResults() {
@@ -49,6 +61,7 @@ class Results extends Component {
 
   render() {
     const showResults = this._checkResults();
+    const showError = this._checkErrors();
     return (
       <Fragment>
         {showResults && (
@@ -56,7 +69,8 @@ class Results extends Component {
             <div className={cx('cards')}>{this._renderResults()}</div>
           </div>
         )}
-        {!showResults && <NoResults />}
+        {showError && <ErrorMessage message={this.props.data.error} />}
+        {!showResults && !showError && <NoResults />}
       </Fragment>
     );
   }
