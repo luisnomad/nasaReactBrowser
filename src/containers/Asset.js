@@ -46,6 +46,21 @@ class Asset extends Component {
     this.props.clearAsset();
   }
 
+  shouldComponentUpdate(nextProps) {
+    const currentAssetData = this.props.nasa.assetContent;
+    const nextAssetData = this.props.nasa.assetContent;
+
+    if (!currentAssetData) {
+      return true;
+    }
+
+    if (nextAssetData.timestamp != nextAssetData.timestamp) {
+      return true;
+    }
+
+    return false;
+  }
+
   _renderImages(assetData) {
     const { assetContent } = this.props.nasa;
     return (
@@ -145,7 +160,6 @@ class Asset extends Component {
   render() {
     const { assetId } = this.state;
     if (!this.props.nasa.collection) {
-      debugger;
       return (
         <div>
           Looks like you arrived here without making a search first! Go to{' '}

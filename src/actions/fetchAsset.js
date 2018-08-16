@@ -85,6 +85,8 @@ const transformAssetData = (data, mediaType) => {
       return output;
     }, {});
 
+  parsedData.timestamp = new Date().getTime();
+
   if (parsedData.meta) {
     return axios.get(parsedData.meta).then(metaData => {
       // Group data by type
