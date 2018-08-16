@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { fetchAsset, clearAsset } from '../actions';
 import { Meta } from '../components/meta';
 import Header from '../components/header';
 import styles from './Asset.scss';
@@ -19,7 +19,6 @@ class Asset extends Component {
     this.state = {
       assetId,
       textCollapsed: false,
-      assetContent: null,
       videoLoaded: false
     };
 
@@ -36,85 +35,22 @@ class Asset extends Component {
     const assets = this.props.nasa.collection.items;
     const { assetId } = this.state;
     if (assets && assets[assetId]) {
-      // TODO: Move this to a helper function or a redux action, out of this lifecycle method
-      // so it can be tested!
       const nasaId = assets[assetId].data[0].nasa_id;
       const mediaType = assets[assetId].data[0].media_type;
-      const URL = `https://images-api.nasa.gov/asset/${nasaId}`;
-      axios
-        .get(URL)
-        .then(res => {
-          const { collection } = res.data;
-          const parsedData = collection.items
-            .map(item => {
-              return item.href;
-            })
-            .reduce((output, item) => {
-              if (item.indexOf('metadata.json') > 0) {
-                output.meta = item;
-              } else {
-                const mobileMedia =
-                  mediaType === 'image' ? '~medium.' : '~mobile.';
 
-                output.media = output.media || [];
-                output.media.push(item);
-
-                if (item.indexOf(mobileMedia) > 0) {
-                  output.mobile = item;
-                }
-
-                if (item.indexOf('~orig.') > 0) {
-                  output.desktop = item;
-                }
-
-                if (item.indexOf('.srt') > 0) {
-                  output.subtitle = item;
-                }
-
-                if (!output.videoPoster && item.indexOf('preview_thumb') > 0) {
-                  output.videoPoster = item;
-                }
-              }
-              return output;
-            }, {});
-
-          if (parsedData.meta) {
-            // TODO: This is not the right place for this
-            return axios.get(parsedData.meta).then(metaData => {
-              // Group data by type
-              const groupMetaData = Object.keys(metaData.data).reduce(
-                (output, item) => {
-                  const value = metaData.data[item];
-                  if (value !== '') {
-                    const keys = item.split(':');
-                    const currentGroup = keys.length > 1 ? keys[0] : 'Other';
-                    const currentKey = keys.length > 1 ? keys[1] : item;
-                    output[currentGroup] = output[currentGroup] || {};
-                    output[currentGroup][currentKey] = Array.isArray(value)
-                      ? value.join(', ')
-                      : value;
-                  }
-                  return output;
-                },
-                {}
-              );
-              parsedData.meta = groupMetaData;
-              return parsedData;
-            });
-          }
-          return parsedData;
-        })
-        .then(parsedData => {
-          this.setState({ assetContent: parsedData });
-        });
+      this.props.fetchAsset(nasaId, mediaType);
     }
   }
 
+  componentWillUnmount() {
+    this.props.clearAsset();
+  }
+
   _renderImages(assetData) {
-    const { assetContent } = this.state;
+    const { assetContent } = this.props.nasa;
     return (
       <p className={cx('image-wrapper', 'mb-3 mb-md-0 mr-md-3 w-60')}>
-        {!assetContent && <div>Loading image...</div>}
+        {!assetContent && <span>Loading image...</span>}
         {assetContent &&
           assetContent.mobile && (
             <img
@@ -140,7 +76,8 @@ class Asset extends Component {
   }
 
   _renderVideo() {
-    const { assetContent, videoLoaded } = this.state;
+    const { videoLoaded } = this.state;
+    const { assetContent } = this.props.nasa;
     return (
       assetContent && (
         <Fragment>
@@ -180,7 +117,7 @@ class Asset extends Component {
 
   _renderAsset(assetData) {
     const { description, media_type } = assetData.data[0];
-    const { assetContent } = this.state;
+    const { assetContent } = this.props.nasa;
     return (
       <div
         className={cx({
@@ -208,6 +145,7 @@ class Asset extends Component {
   render() {
     const { assetId } = this.state;
     if (!this.props.nasa.collection) {
+      debugger;
       return (
         <div>
           Looks like you arrived here without making a search first! Go to{' '}
@@ -237,10 +175,18 @@ Asset.propTypes = {
   nasa: PropTypes.object
 };
 
+const mapDispatchToProps = {
+  fetchAsset,
+  clearAsset
+};
+
 const mapStateToProps = state => {
   return {
     nasa: state.nasa
   };
 };
 
-export default connect(mapStateToProps)(Asset);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Asset);
