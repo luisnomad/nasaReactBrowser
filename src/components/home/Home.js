@@ -1,15 +1,20 @@
 import React, { Fragment } from 'react';
 import Header from '../header';
+import SectionHeader from '../sectionHeader';
+import { PictureOfTheDay } from '../../containers/';
 
 const Home = () => (
   <Fragment>
-    <Header>
+    <Header className="bg-dark text-light">
       <h1 className="jumbotron-heading">Welcome to the NASA project!</h1>
-      <p className="lead text-muted">
-        This is a demo project demonstrating the use of:
-      </p>
+      <p className="lead text-muted">A small but fun React/Redux demo</p>
     </Header>
+    <PictureOfTheDay />
+    <SectionHeader className="bg-dark text-light">
+      <h2 className="jumbotron-heading">About this project</h2>
+    </SectionHeader>
     <div className="container">
+      <p>This is a demo project demonstrating the use of:</p>
       <ul>
         <li>React + Redux</li>
         <li>React Router</li>
