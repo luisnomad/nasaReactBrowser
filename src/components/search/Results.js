@@ -25,7 +25,6 @@ class Results extends Component {
 
   _checkErrors() {
     const { data } = this.props;
-    console.log(data.error);
     return !data || data.error;
   }
 

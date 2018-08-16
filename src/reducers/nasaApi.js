@@ -27,12 +27,12 @@ const nasaApi = (state = {}, action) => {
     case FETCH_NASAPOTD_SUCCESS:
       return Object.assign({}, state, {
         error: null,
-        NasaPictureOfTheDay: action.payload
+        nasaPictureOfTheDay: action.payload
       });
     case FETCH_NASAPOTD_FAIL:
       return Object.assign({}, state, {
         error: action.error,
-        NasaPictureOfTheDay: null
+        nasaPictureOfTheDay: null
       });
     case CLEAR_ASSET:
       return Object.assign({}, state, {

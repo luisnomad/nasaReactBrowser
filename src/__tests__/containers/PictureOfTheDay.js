@@ -33,11 +33,11 @@ describe('<PictureOfTheDay />', () => {
   });
 
   it('Should include a header', () => {
-    expect(wrapped.find('.header').length).toEqual(1);
+    expect(wrapped.find('.header')).toBeTruthy();
   });
 
   it('Should include an image and a caption', () => {
-    expect(wrapped.find('.figure').length).toEqual(1);
-    expect(wrapped.find('.figure-caption').length).toEqual(1);
+    expect(wrapped.find('.figure')).toBeTruthy();
+    expect(wrapped.find('.figure-caption')).toBeTruthy();
   });
 });
