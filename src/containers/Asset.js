@@ -46,7 +46,7 @@ class Asset extends Component {
     this.props.clearAsset();
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps, nextState) {
     const currentAssetData = this.props.nasa.assetContent;
     const nextAssetData = this.props.nasa.assetContent;
 
@@ -55,6 +55,10 @@ class Asset extends Component {
     }
 
     if (currentAssetData.timestamp !== nextAssetData.timestamp) {
+      return true;
+    }
+
+    if (this.state.videoLoaded !== nextState.videoLoaded) {
       return true;
     }
 
